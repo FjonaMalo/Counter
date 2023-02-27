@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 
 import counterReducer from "./store/reducers/counter";
@@ -31,7 +32,7 @@ const logger = (store) => {
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(logger))
+  composeWithDevTools(applyMiddleware(logger, thunk))
 );
 
 ReactDOM.render(
